@@ -1,0 +1,3363 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
+  <title>how run asyncio in python {'site': 'stackoverflow.com'} - Szukaj w Google</title>
+  <script nonce="wtHAyvtpU6jRh6JRHdeWag==">
+    (function () {
+      document.documentElement.addEventListener("submit", function (b) {
+        var a;
+        if (a = b.target) {
+          var c = a.getAttribute("data-submitfalse");
+          a = "1" == c || "q" == c && !a.elements.q.value ? !0 : !1
+        } else a = !1;
+        a && (b.preventDefault(), b.stopPropagation())
+      }, !0);
+      document.documentElement.addEventListener("click", function (b) {
+        var a;
+        a: {
+          for (a = b.target; a && a != document.documentElement; a = a.parentElement)
+            if ("A" == a.tagName) {
+              a = "1" == a.getAttribute("data-nohref");
+              break a
+            } a = !1
+        }
+        a && b.preventDefault()
+      }, !0);
+    }).call(this);
+    (function () {
+      var a = window.performance;
+      window.start = Date.now();
+      a: {
+        var b = window;
+        if (a) {
+          var c = a.timing;
+          if (c) {
+            var d = c.navigationStart,
+              f = c.responseStart;
+            if (f > d && f <= window.start) {
+              window.start = f;
+              b.wsrt = f - d;
+              break a
+            }
+          }
+          a.now && (b.wsrt = Math.floor(a.now()))
+        }
+      }
+      window.google = window.google || {};
+      var h = function (g) {
+        g && g.target.setAttribute("data-iml", Date.now())
+      };
+      document.documentElement.addEventListener("load", h, !0);
+      google.rglh = function () {
+        document.documentElement.removeEventListener("load", h, !0)
+      };
+    }).call(this);
+    (function () {
+      var c = [],
+        e = 0;
+      window.ping = function (b) {
+        -1 == b.indexOf("&zx") && (b += "&zx=" + Date.now());
+        var a = new Image,
+          d = e++;
+        c[d] = a;
+        a.onerror = a.onload = a.onabort = function () {
+          delete c[d]
+        };
+        a.src = b
+      };
+    }).call(this);
+
+  </script>
+  <style>
+    body {
+      margin: 0 auto;
+      max-width: 736px;
+      padding: 0 8px
+    }
+
+    a {
+      color: #1967D2;
+      text-decoration: none;
+      tap-highlight-color: rgba(0, 0, 0, .1)
+    }
+
+    a:visited {
+      color: #4B11A8
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    img {
+      border: 0
+    }
+
+    html {
+      font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      text-size-adjust: 100%;
+      color: #3C4043;
+      word-wrap: break-word;
+      background-color: #fff
+    }
+
+    .bRsWnc {
+      background-color: #fff;
+      border-top: 1px solid #e0e0e0;
+      height: 39px;
+      overflow: hidden
+    }
+
+    .N6RWV {
+      height: 51px;
+      overflow-scrolling: touch;
+      overflow-x: auto;
+      overflow-y: hidden
+    }
+
+    .Uv67qb {
+      box-pack: justify;
+      font-size: 12px;
+      line-height: 37px;
+      justify-content: space-between;
+      justify-content: space-between
+    }
+
+    .Uv67qb a,
+    .Uv67qb span {
+      color: #757575;
+      display: block;
+      flex: none;
+      padding: 0 16px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    span.OXXup {
+      border-bottom: 2px solid #4285f4;
+      color: #4285f4;
+      font-weight: bold
+    }
+
+    a.eZt8xd:visited {
+      color: #757575
+    }
+
+    .FElbsf {
+      border-left: 1px solid rgba(0, 0, 0, .12)
+    }
+
+    header article {
+      overflow: visible
+    }
+
+    .Pg70bf {
+      height: 39px;
+      display: box;
+      display: flex;
+      display: flex;
+      width: 100%
+    }
+
+    .H0PQec {
+      position: relative;
+      flex: 1
+    }
+
+    .sbc {
+      display: flex;
+      width: 100%
+    }
+
+    .Pg70bf input {
+      margin: 2px 4px 2px 8px;
+    }
+
+    .x {
+      width: 26px;
+      color: #757575;
+      font: 27px/38px arial, sans-serif;
+      line-height: 40px;
+    }
+
+    #qdClwb {
+      flex: 0 0 auto;
+      width: 39px;
+      height: 39px;
+      border-bottom: 0;
+      padding: 0;
+      border-top-right-radius: 8px;
+      background-color: #3b78e7;
+      border: 1px solid #3367d6;
+      background-image: url(data:image/gif;base64,R0lGODdhJAAjAPIHAODr/nCk+MPZ/FmV96zK+/7+/5K5+kqL9iwAAAAAJAAjAEADani63P4wykmbKcQRXDscQAEMXmmeaLQVLCukzyC09AjfeK7v/MAajACLhPMVAgwjsUcEiZa8xgAYrVqv2Kx2iwsIAAABknfBBAKrTE4IcMyot8ur8datqIbQfJdnAfo2WE6BV05wXIiJigkAOw==);
+    }
+
+    .sc {
+      font-size: ;
+      position: absolute;
+      top: 39px;
+      left: 0;
+      right: 0;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+      z-index: 2;
+      background-color: #fff
+    }
+
+    .sc>div {
+      padding: 10px 10px;
+      padding-left: 16px;
+      padding-left: 14px;
+      border-top: 1px solid #DFE1E5
+    }
+
+    .scs {
+      background-color: #f5f5f5;
+    }
+
+    .noHIxc {
+      display: block;
+      font-size: 16px;
+      padding: 0 0 0 8px;
+      flex: 1;
+      height: 35px;
+      outline: none;
+      border: none;
+      width: 100%;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      overflow: hidden;
+    }
+
+    .sbc input[type=text] {
+      background: none
+    }
+
+    .sml .cOl4Id {
+      display: none
+    }
+
+    .l {
+      display: none
+    }
+
+    .sml header {
+      background: none
+    }
+
+    .sml .l {
+      display: block;
+      padding: 0 8px
+    }
+
+    .sml .l {
+      letter-spacing: -1px;
+      text-align: center;
+      border-radius: 2px 0 0 0;
+      font: 22px/36px Futura, Arial, sans-serif;
+      font-smoothing: antialiased
+    }
+
+    .bz1lBb {
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.18);
+      margin-top: 10px
+    }
+
+    .KP7LCb {
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 2px 3px rgba(32, 33, 36, 0.18);
+      margin-bottom: 10px;
+      overflow: hidden
+    }
+
+    .cOl4Id {
+      letter-spacing: -1px;
+      text-align: center;
+      font: 22pt Futura, Arial, sans-serif;
+      padding: 10px 0 5px 0;
+      height: 37px;
+      font-smoothing: antialiased
+    }
+
+    .cOl4Id span {
+      display: inline-block
+    }
+
+    .S591j {
+      height: 100%
+    }
+
+    .V6gwVd {
+      color: #4285f4
+    }
+
+    .iWkuvd {
+      color: #ea4335
+    }
+
+    .cDrQ7 {
+      color: #fbcc05
+    }
+
+    .ntlR9 {
+      color: #34a853
+    }
+
+    .tJ3Myc {
+      -webkit-transform: rotate(-20deg);
+      position: relative;
+      left: -1px;
+      display: inline-block
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 18px
+    }
+
+    footer a,
+    footer a:visited,
+    .smiUbb {
+      color: #5f6368
+    }
+
+    .ksTU4c {
+      margin: 0 13px
+    }
+
+    #mCljob {
+      margin-top: 36px
+    }
+
+    #mCljob>div {
+      margin: 20px
+    }
+
+  </style>
+</head>
+
+<body jsmodel=" TvHxbe">
+  <header id="hdr">
+    <script nonce="wtHAyvtpU6jRh6JRHdeWag==">
+      (function () {
+        var c = 500;
+        (function () {
+          window.screen && window.screen.width <= c && window.screen.height <= c && document.getElementById("hdr")
+            .classList.add("sml");
+        }).call(this);
+      })();
+
+    </script>
+    <div class="cOl4Id"><a href="/?sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQOwgC"><span
+          class="V6gwVd">G</span><span class="iWkuvd">o</span><span class="cDrQ7">o</span><span
+          class="V6gwVd">g</span><span class="ntlR9">l</span><span class="iWkuvd tJ3Myc">e</span></a></div>
+    <div class="bz1lBb">
+      <form class="Pg70bf" id="sf"><a class="l"
+          href="/?output=search&amp;ie=UTF-8&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQPAgE"><span
+            class="V6gwVd">G</span><span class="iWkuvd">o</span><span class="cDrQ7">o</span><span
+            class="V6gwVd">g</span><span class="ntlR9">l</span><span class="iWkuvd tJ3Myc">e</span></a><input name="ie"
+          value="ISO-8859-1" type="hidden">
+        <div class="H0PQec">
+          <div class="sbc esbc"><input class="noHIxc" value="how run asyncio in python {'site': 'stackoverflow.com'}"
+              autocapitalize="none" autocomplete="off" name="q" spellcheck="false" type="text"><input name="oq"
+              type="hidden"><input name="aqs" type="hidden">
+            <div class="x">×</div>
+            <div class="sc"></div>
+          </div>
+        </div><button id="qdClwb" type="submit"></button>
+      </form>
+    </div><noscript>
+      <meta
+        content="0;url=/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;gbv=1&amp;sei=8VaWXsaoKIrZrgTo0oXQAg"
+        http-equiv="refresh">
+      <style>
+        table,
+        div,
+        span,
+        p {
+          display: none
+        }
+
+      </style>
+      <div style="display:block">Je&#347;li w ci&#261;gu kilku sekund nie nast&#261;pi przekierowanie, kliknij <a
+          href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;gbv=1&amp;sei=8VaWXsaoKIrZrgTo0oXQAg">tutaj</a>.
+      </div>
+    </noscript>
+  </header>
+  <div id="main">
+    <div>
+      <div class="KP7LCb">
+        <div class="bRsWnc">
+          <div class="N6RWV">
+            <div class="Pg70bf Uv67qb"> <span class="OXXup">Wszystko</span><a class="eZt8xd"
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=vid&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ_AUICCgB">Filmy</a><a
+                class="eZt8xd"
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ_AUICSgC">Grafika</a><a
+                class="eZt8xd"
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=shop&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ_AUICigD">Zakupy</a>
+              <a
+                href="https://maps.google.com/maps?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ_AUICygE">Mapy</a>
+              <a
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=nws&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ_AUIDCgF">Wiadomo&#347;ci</a>
+              <a
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=bks&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ_AUIDSgG">Ksi&#261;&#380;ki</a>
+              <div class="FElbsf"><a href="/advanced_search" style="white-space:nowrap" id="st-toggle"
+                  role="button">Narz&#281;dzia wyszukiwania</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Pg70bf wEsjbd ZINbbc xpd O9g5cc uUPGi" style="display:none" id="st-card">
+        <style>
+          .wEsjbd {
+            background-color: #fff;
+            height: 44px;
+            white-space: nowrap
+          }
+
+          .coPU8c {
+            height: 60px;
+            overflow-scrolling: touch;
+            overflow-x: auto;
+            overflow-y: hidden
+          }
+
+          .Xj2aue {
+            height: 44px;
+            overflow: hidden
+          }
+
+          .RnNGze {
+            margin: 11px 16px
+          }
+
+          .wEsjbd div,
+          .wEsjbd a,
+          .wEsjbd li {
+            outline-width: 0;
+            outline: none
+          }
+
+        </style>
+        <div class="Xj2aue">
+          <div class="coPU8c">
+            <div class="RnNGze">
+              <style>
+                .PA9J5 {
+                  display: inline-block
+                }
+
+                .RXaOfd {
+                  display: inline-block;
+                  height: 22px;
+                  position: relative;
+                  padding-top: 0;
+                  padding-bottom: 0;
+                  padding-right: 16px;
+                  padding-left: 0;
+                  line-height: 22px;
+                  cursor: pointer;
+                  text-transform: uppercase;
+                  font-size: 12px;
+                  color: #757575
+                }
+
+                .sa1toc {
+                  display: none;
+                  position: absolute;
+                  background: #fff;
+                  border: 1px solid #d6d6d6;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                  margin: 0;
+                  white-space: nowrap;
+                  z-index: 103;
+                  line-height: 17px;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  padding-left: 0px
+                }
+
+                .PA9J5:hover .sa1toc {
+                  display: block
+                }
+
+                .mGSy8d a:active,
+                .RXaOfd:active {
+                  color: #4285f4
+                }
+
+              </style>
+              <div class="PA9J5">
+                <div class="RXaOfd" role="button" tabindex="0">
+                  <style>
+                    .TWMOUc {
+                      display: inline-block;
+                      padding-right: 14px;
+                      white-space: nowrap
+                    }
+
+                    .vQYuGf {
+                      font-weight: bold
+                    }
+
+                    .OmTIzf {
+                      border-color: #909090 transparent;
+                      border-style: solid;
+                      border-width: 4px 4px 0 4px;
+                      width: 0;
+                      height: 0;
+                      margin-left: -10px;
+                      top: 50%;
+                      margin-top: -2px;
+                      position: absolute
+                    }
+
+                    .RXaOfd:active .OmTIzf {
+                      border-color: #4285f4 transparent
+                    }
+
+                  </style>
+                  <div class="TWMOUc">Dowolny j&#281;zyk</div><span class="OmTIzf"></span>
+                </div>
+                <ul class="sa1toc ozatM">
+                  <style>
+                    .ozatM {
+                      font-size: 12px;
+                      text-transform: uppercase
+                    }
+
+                    .ozatM .yNFsl,
+                    .ozatM li {
+                      list-style-type: none;
+                      list-style-position: outside;
+                      list-style-image: none
+                    }
+
+                    .yNFsl.SkUj4c,
+                    .yNFsl a {
+                      color: rgba(0, 0, 0, 0.54);
+                      text-decoration: none;
+                      padding: 6px 44px 6px 14px;
+                      line-height: 17px;
+                      display: block
+                    }
+
+                    .SkUj4c {
+                      background-image: url(//ssl.gstatic.com/ui/v1/menu/checkmark2.png);
+                      background-position: right center;
+                      background-repeat: no-repeat
+                    }
+
+                    .SkUj4c:active {
+                      background-color: #f5f5f5
+                    }
+
+                  </style>
+                  <li class="yNFsl SkUj4c">Dowolny j&#281;zyk</li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=lr:lang_1pl&amp;lr=lang_pl&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIDw">Tylko
+                      j&#281;zyk polski</a></li>
+                </ul>
+              </div>
+              <div class="PA9J5">
+                <div class="RXaOfd" role="button" tabindex="0">
+                  <div class="TWMOUc">Kiedykolwiek</div><span class="OmTIzf"></span>
+                </div>
+                <ul class="sa1toc ozatM">
+                  <li class="yNFsl SkUj4c">Kiedykolwiek</li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:h&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIEQ">
+                      Ostatnia godzina</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:d&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIEg">
+                      Ostatnie 24 godziny</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:w&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIEw">
+                      Ostatni tydzie&#324;</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:m&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIFA">
+                      Ostatni miesi&#261;c</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:y&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIFQ">
+                      Ostatni rok</a></li>
+                </ul>
+              </div>
+              <div class="PA9J5">
+                <div class="RXaOfd" role="button" tabindex="0">
+                  <div class="TWMOUc">Wszystkie wyniki</div><span class="OmTIzf"></span>
+                </div>
+                <ul class="sa1toc ozatM">
+                  <li class="yNFsl SkUj4c">Wszystkie wyniki</li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=li:1&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQpwUIFw">Dok&#322;adnie</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script nonce="wtHAyvtpU6jRh6JRHdeWag==">
+          (function () {
+            var a = document.getElementById("st-toggle"),
+              b = document.getElementById("st-card");
+            a && b && a.addEventListener("click", function (c) {
+              b.style.display = b.style.display ? "" : "none";
+              c.preventDefault()
+            }, !1);
+          }).call(this);
+
+        </script>
+      </div>
+    </div>
+    <style>
+      .ZINbbc {
+        background-color: #fff;
+        margin-bottom: 10px;
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        border-radius: 8px
+      }
+
+      .uUPGi {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .O9g5cc>*:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px
+      }
+
+      .O9g5cc>*:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px
+      }
+
+      .O9g5cc>.qxDOhb>*:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px
+      }
+
+      .O9g5cc>.qxDOhb>*:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px
+      }
+
+      .rLshyf,
+      .BmP5tf {
+        padding-top: 12px;
+        padding-bottom: 12px
+      }
+
+      .w1C3Le,
+      .BmP5tf,
+      .G5NbBd {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .G5NbBd {
+        padding-bottom: 12px
+      }
+
+      .MUxGbd {
+        font-size: 14px;
+        font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+        line-height: 20px;
+        padding-top: 1px;
+        margin-bottom: -1px
+      }
+
+      .MUxGbd.v0nnCb {
+        font-size: 16px;
+        line-height: 20px;
+        padding-top: 1px;
+        margin-bottom: -1px
+      }
+
+      .lyLwlc {
+        color: #202124
+      }
+
+      a.fdYsqf {
+        color: #4B11A8
+      }
+
+      .rl7ilb {
+        display: block;
+        clear: both
+      }
+
+      .kCrYT {
+        padding: 12px 16px 12px
+      }
+
+      .BNeawe {
+        white-space: pre-line;
+        word-wrap: break-word
+      }
+
+      .vvjwJb {
+        color: #1967D2;
+        font-size: 16px;
+        line-height: 20px
+      }
+
+      .vvjwJb a:visited {
+        color: #4B11A8
+      }
+
+      .vvjwJb.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .vvjwJb.HrGdeb a:visited {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .UPmit {
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .UPmit.HrGdeb {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .UPmit.AP7Wnd {
+        color: rgba(0, 102, 33, 1)
+      }
+
+      .x54gtf {
+        height: 1px;
+        background-color: #dfe1e5;
+        margin: 0 16px
+      }
+
+      .Q0HXG {
+        height: 1px;
+        background-color: #dfe1e5
+      }
+
+      .Ap5OSd {
+        padding-bottom: 12px
+      }
+
+      .s3v9rd {
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .s3v9rd.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .s3v9rd.AP7Wnd {
+        color: #202124
+      }
+
+      .mSx1Ee {
+        padding-left: 48px;
+        margin: 0
+      }
+
+      .v9i61e {
+        padding-bottom: 8px
+      }
+
+      .XLloXe {
+        color: #1967D2;
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .XLloXe a:visited {
+        color: #4B11A8
+      }
+
+      .XLloXe.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .XLloXe.HrGdeb a:visited {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .hfgVwf {
+        margin-top: 12px
+      }
+
+      .IxZjcf .hfgVwf {
+        margin-bottom: 12px
+      }
+
+      .OdF8Fd {
+        float: right;
+        padding-left: 16px
+      }
+
+      .p1vimb {
+        border-radius: 8px;
+        display: block
+      }
+
+      .rkvY3c {
+        clear: both
+      }
+
+      .CgE3Ac {
+        margin: 0 16px
+      }
+
+      .I9mEQ {
+        padding-bottom: 12px
+      }
+
+      .LnMnt {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%
+      }
+
+      .LnMnt td {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 8px
+      }
+
+      .LnMnt .s5aIid {
+        padding-right: 0
+      }
+
+      .IxZjcf {
+        border-bottom: 1px solid #dfe1e5
+      }
+
+      .sjsZvd {
+        vertical-align: top
+      }
+
+      .IfyLsd {
+        float: left;
+        margin-right: 8px
+      }
+
+      .OE1use {
+        text-align: left
+      }
+
+      .BSv1qf {
+        text-align: center
+      }
+
+      .HlHBvc {
+        text-align: right
+      }
+
+      .r0bn4c.tr0dw {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .r0bn4c.rQMQod {
+        color: #70757A
+      }
+
+      .tAd8D {
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .tAd8D.HrGdeb {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .tAd8D.AP7Wnd {
+        color: #70757A
+      }
+
+      .ko6Hn {
+        text-decoration: underline
+      }
+
+      .ZTv9Bb {
+        display: block
+      }
+
+      .nVTMpe {
+        border-radius: 8px
+      }
+
+      .deIvCb {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400
+      }
+
+      .deIvCb.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .deIvCb.AP7Wnd {
+        color: #202124
+      }
+
+      .FCUp0c {
+        font-weight: bold
+      }
+
+      .X7NTVe {
+        display: table;
+        width: 100%;
+        padding-right: 16px;
+        box-sizing: border-box
+      }
+
+      .tHmfQe {
+        display: table-cell;
+        padding: 12px 0 12px 16px
+      }
+
+      .UHtrk {
+        width: 72px
+      }
+
+      .HBTM6d {
+        width: 30px
+      }
+
+      .XS7yGd {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 12px 0 12px 8px
+      }
+
+      .am3QBf {
+        display: table;
+        vertical-align: top
+      }
+
+      .Icx6Cd {
+        margin: 0 auto 8px
+      }
+
+      .mAdjQc {
+        text-align: right
+      }
+
+      .uEec3 {
+        font-size: 12px;
+        line-height: 16px
+      }
+
+      .uEec3.HrGdeb {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .uEec3.AP7Wnd {
+        color: #70757A
+      }
+
+    </style>
+    <div>
+      <!--SW_C_X-->
+    </div>
+    <div class="ZINbbc xpd O9g5cc uUPGi">
+      <div id="scc" class="BmP5tf">
+        <div class="MUxGbd v0nnCb lyLwlc">Czy chodzi&#322;o Ci o: <a
+            href="/search?ie=UTF-8&amp;q=how+run+async+in+python+%7B'site':+'stackoverflow.com'%7D&amp;spell=1&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQBXoECAwQAQ">how
+            run <b>async</b> in python {'site': 'stackoverflow.com'}</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/questions/49005651/how-does-asyncio-actually-work&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjAAegQIARAB&amp;usg=AOvVaw3u7wac8pH3raF2NfT0Uo63">
+            <div class="BNeawe vvjwJb AP7Wnd">How does asyncio actually work? - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; questions &#8250;
+              how-does-asyncio-actually-work</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="Ap5OSd">
+                    <div class="BNeawe s3v9rd AP7Wnd">How does asyncio work? Before answering this question we need to
+                      understand a few base terms, skip these if you already know any of them. Generators.</div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/49119793/understanding-python-concurrency-with-asyncio&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQrAIwAHoECAEQAg&amp;usg=AOvVaw1nnrLe1BiFB41BK08Td7Lr"><span
+                            class="XLloXe AP7Wnd">Understanding Python Concurrency with Asyncio - Stack
+                            Overflow</span></a></span></div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/50634083/python-how-to-make-tasks-run-asynchronously-using-asyncio&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQrAIwAHoECAEQAw&amp;usg=AOvVaw1gFJ0xHrNA64WoBXXdaKf3"><span
+                            class="XLloXe AP7Wnd">Python - How to make tasks run asynchronously using asyncio
+                            ...</span></a></span></div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/41283091/how-to-use-async-await-in-python-3-5&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQrAIwAHoECAEQBA&amp;usg=AOvVaw0UwIwKtaPeST56rluKTuV2"><span
+                            class="XLloXe AP7Wnd">How to use async/await in python 3.5+ - Stack
+                            Overflow</span></a></span></div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/57876923/python-3-6-async-function-over-loop-in-the-simplest-way-possible&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQrAIwAHoECAEQBQ&amp;usg=AOvVaw1bUFVbhpbTFHmZz5kmsbdA"><span
+                            class="XLloXe AP7Wnd">Python 3.6 async function over loop in the simplest ... - Stack
+                            Overflow</span></a></span></div>
+                  </div>
+                  <div>
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/search?q=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D+site:stackoverflow.com&amp;ie=UTF-8"><span
+                            class="XLloXe AP7Wnd">Wi&#281;cej wyników z stackoverflow.com</span></a></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/tags/python-asyncio/info&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjABegQIBhAB&amp;usg=AOvVaw0594ASJXz9SZRq92uUUrwR">
+            <div class="BNeawe vvjwJb AP7Wnd">'python-asyncio' tag wiki - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; tags &#8250; python-asyncio &#8250; info
+            </div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">By using our site, you acknowledge that you have read and understand
+                    our Cookie Policy, ... This tag is to be used for the asyncio Python package which provides ...
+                    resources, running network clients and servers, and other related primitives.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/a/49007291&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjACegQICBAB&amp;usg=AOvVaw0T0xyhkyawylmnKw853FsP">
+            <div class="BNeawe vvjwJb AP7Wnd">python - How does asyncio actually work? - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; ...</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">By using our site, you acknowledge that you have read and understand
+                    our ... Before async and await were introduced in Python 3.5, we created coroutines in the exact ...
+                    But it's not how asyncio works, it's how select and sockets work which is ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/questions/49119793/understanding-python-concurrency-with-asyncio%3Frq%3D1&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjADegQIAxAB&amp;usg=AOvVaw1l-_i6zCo6cuaJZQUT_Jlc">
+            <div class="BNeawe vvjwJb AP7Wnd">Understanding Python Concurrency with Asyncio - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; questions &#8250;
+              understanding-python-concurrency...</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">import asyncio import time async def myWorker(lock, i):
+                    print("Attempting to attain lock {}".format(i)) # acquire lock with await lock: # run critical
+                    section of code ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/questions/tagged/python-asyncio&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjAEegQIBBAB&amp;usg=AOvVaw1PPCnh9sekShvzAVBm0E_T">
+            <div class="BNeawe vvjwJb AP7Wnd">Newest 'python-asyncio' Questions - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; questions &#8250; tagged &#8250;
+              python-asyncio</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">This tag is to be used for the asyncio Python package which provides
+                    mechanisms for writing ... How to kill all background async process run through python?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/tags/python-asyncio/hot&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjAFegQIBRAB&amp;usg=AOvVaw0UDOjKHVeIs6pboSZI0OHP">
+            <div class="BNeawe vvjwJb AP7Wnd">Hottest 'python-asyncio' Answers - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; tags &#8250; python-asyncio &#8250; hot
+            </div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">Python asyncio: Enter into a temporary async context? I can't use
+                    asyncio.run(), because the caller could already have a running event loop and you can only ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="https://books.google.pl/books?id=89W8DwAAQBAJ&amp;pg=PT566&amp;lpg=PT566&amp;dq=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D&amp;source=bl&amp;ots=yT2zt-AhIc&amp;sig=ACfU3U3pk7iUsg6NvKzb3pAwdJfnFF2lIg&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ6AEwBnoECAkQAQ">
+            <div class="BNeawe vvjwJb AP7Wnd">Introducing Python: Modern Computing in Simple Packages</div>
+            <div class="BNeawe UPmit AP7Wnd">https://books.google.pl &#8250; books</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">await asyncio.sleep(seconds) . ... asyncio.run(wicked()) Surrender,
+                    Dorothy! ... web-crawling example using trio and asks, adapted from a stackoverflow answer.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="https://books.google.pl/books?id=j1_NDwAAQBAJ&amp;pg=PA132&amp;lpg=PA132&amp;dq=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D&amp;source=bl&amp;ots=cdeTIl92Qh&amp;sig=ACfU3U0S6NTl7lkE2xmjquEsOHa-Nd-pSA&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ6AEwB3oECAsQAQ">
+            <div class="BNeawe vvjwJb AP7Wnd">Using Asyncio in Python: Understanding Python's Asynchronous ...</div>
+            <div class="BNeawe UPmit AP7Wnd">https://books.google.pl &#8250; books</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">2013 on Stack Overflow Support for so-called asynchronous features
+                    was ... to manage multiple socket events in a single thread in Python back then (and, in fact ...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="https://books.google.pl/books?id=nHDtDAAAQBAJ&amp;pg=PA225&amp;lpg=PA225&amp;dq=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D&amp;source=bl&amp;ots=ky7TMe97Uq&amp;sig=ACfU3U32yLa7RnehYuGxcgQIGySvxI0RuA&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ6AEwCHoECAoQAQ">
+            <div class="BNeawe vvjwJb AP7Wnd">The Hitchhiker's Guide to Python: Best Practices for Development</div>
+            <div class="BNeawe UPmit AP7Wnd">https://books.google.pl &#8250; books</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">Jeff Knupp, author of Writing Idiomatic Python, wrote a blog post
+                    about getting ... GIL (at least in CPython), there will only be one Python process running per
+                    Python ... For that, see the paragraphs on asyncio in &#8220;Performance networking tools in ...
+                    There's a good example use of threading on Stack Overflow, and the Python ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://docs.python.org/3/whatsnew/changelog.html&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQFjAJegQIAhAB&amp;usg=AOvVaw02zkCZE8Dg4LDEZDOw46PV">
+            <div class="BNeawe vvjwJb AP7Wnd">Changelog &#8212; Python 3.8.2 documentation</div>
+            <div class="BNeawe UPmit AP7Wnd">https://docs.python.org &#8250; whatsnew &#8250; changelog</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">bpo-39191: Perform a check for running loop before starting a new
+                    task in ... bpo- 39006: Fix asyncio when the ssl module is missing: only check for ssl. ...
+                    DocXMLRPCServer when rendering the document page as HTML. ... repr of deeply nested dict now raises
+                    a RecursionError instead of crashing due to a stack overflow.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div>
+          <div class="CgE3Ac I9mEQ">
+            <table class="LnMnt">
+              <tbody>
+                <tr>
+                  <td class="sjsZvd s5aIid OE1use">
+                    <div class="hfgVwf">
+                      <div class="BNeawe s3v9rd AP7Wnd"><span class="r0bn4c rQMQod">Aby pokaza&#263; najbardziej trafne
+                          wyniki, pomin&#281;li&#347;my kilka pozycji bardzo podobnych do 10 ju&#380;
+                          wy&#347;wietlonych.
+                          Je&#347;li chcesz, mo&#380;esz </span><span class="BNeawe"><a
+                            href="/url?q=/search%3Fq%3Dhow%2Brun%2Basyncio%2Bin%2Bpython%2B%257B'site':%2B'stackoverflow.com'%257D%26ie%3DUTF-8%26filter%3D0&amp;sa=U&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ880BegQIBxAB&amp;usg=AOvVaw1Mo1kuL8ex6VHoh1bkJf7F"><span
+                              class="tAd8D AP7Wnd"><span class="ko6Hn r0bn4c rQMQod">powtórzy&#263; wyszukiwanie z
+                                uwzgl&#281;dnieniem pomini&#281;tych wyników</span></span></a></span><span
+                          class="r0bn4c rQMQod">.</span></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="hwc"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT">
+          <div class="q4vBJc"></div><span>
+            <div class="BNeawe deIvCb AP7Wnd"><span class="FCUp0c rQMQod">Podobne wyszukiwania</span></div>
+          </span>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=python+3.8.2+download&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAE">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">python 3.8.2 download</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=python+3.8.2+download">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAI">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.8+tutorial&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAM">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Https docs python org 3.8 tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.8+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Http+docs+python+org+tutorial&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAQ">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Http docs python org tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Http+docs+python+org+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.7+tutorial&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAU">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Https docs python org 3.7 tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.7+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python+3.7+examples&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAY">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python 3.7 examples</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python+3.7+examples">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python+3.8+1+interpreter&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAc">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python 3.8 1 interpreter</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python+3.8+1+interpreter">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python+3.8+0+tutorial&amp;sa=X&amp;ved=2ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ1QJ6BAgAEAg">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python 3.8 0 tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python+3.8+0+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div> </div>
+      <div id="mCljob">
+        <div><a
+            href="/url?q=https://accounts.google.com/ServiceLogin%3Fcontinue%3Dhttps://www.google.com/search%253Fq%253D%25257B%252527site%252527:%252B%252527stackoverflow.com%252527%25257D%26hl%3Dpl&amp;sa=U&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQxs8CCEE&amp;usg=AOvVaw0gCjtgrTAlPLr6Q5hdquax">Zaloguj
+            si&#281;</a></div>
+        <div><a class="ksTU4c"
+            href="https://www.google.com/preferences?hl=pl&amp;fg=1&amp;sa=X&amp;ved=0ahUKEwiG5aOBmOnoAhWKrIsKHWhpASoQ5fUCCEI">Ustawienia</a><a
+            class="ksTU4c" href="//policies.google.com/privacy?fg=1">Prywatno&#347;&#263;</a><a class="ksTU4c"
+            href="//policies.google.com/terms?fg=1">Warunki</a></div>
+      </div>
+    </footer>
+    <script nonce="wtHAyvtpU6jRh6JRHdeWag==">
+      (function () {
+        var hl = 'pl';
+        (function () {
+          var b = this || self,
+            d = /^[\w+/_-]+[=]{0,2}$/,
+            e = null;
+          var f = document.querySelector(".l"),
+            g = document.querySelector("#sf"),
+            k = g.querySelector(".sbc"),
+            l = g.querySelector("[type=text]"),
+            m = g.querySelector("[type=submit]"),
+            n = g.querySelector(".sc"),
+            p = g.querySelector(".x"),
+            q = l.value,
+            r = [],
+            t = -1,
+            u = q,
+            w, x, y;
+          q || (p && (p.style.display = "none"), z(!1));
+
+          function z(a) {
+            if (k.classList.contains("esbc")) {
+              var c = k.classList.contains("chsbc"),
+                h = k.classList.contains("rtlsbc");
+              a && (n.style.display = "block", c ? (g.style.borderRadius = "20px 20px 0 0", n.style.borderBottom =
+                  "1px solid #DFE1E5", m.style.borderRadius = h ? "20px 0 0 0" : "0 20px 0 0") : k.style
+                .borderRadius = h ? "0 8px 0 0" : "8px 0 0 0");
+              a || (n.style.display = "none", c ? (g.style.borderRadius = "20px", n.style.borderBottom = "none", m
+                  .style.borderRadius = h ? "20px 0 0 20px" : "0 20px 20px 0") : k.style.borderRadius = h ?
+                "0 8px 8px 0" : "8px 0 0 8px")
+            }
+          }
+
+          function A() {
+            g.querySelector("[name=oq]").value = u;
+            g.querySelector("[name=aqs]").value = "heirloom-srp." + (0 <= t ? t : "") + "." + (0 < r.length ? "0l" +
+              r.length : "")
+          }
+
+          function C() {
+            w = null;
+            if (x) {
+              var a = "/complete/search?client=heirloom-srp&hl=" + hl + "&json=t&callback=hS&q=" +
+                encodeURIComponent(x);
+              "undefined" !== typeof ds && ds && (a += "&ds=" + ds);
+              var c = document.createElement("script");
+              c.src = a;
+              if (null === e) a: {
+                a = b.document;
+                if ((a = a.querySelector && a.querySelector("script[nonce]")) && (a = a.nonce || a.getAttribute(
+                    "nonce")) && d.test(a)) {
+                  e = a;
+                  break a
+                }
+                e = ""
+              }(a = e) && c.setAttribute("nonce", a);
+              document.body.appendChild(c);
+              x = null;
+              w = setTimeout(C, 500)
+            }
+          }
+
+          function D() {
+            for (; n.firstChild;) n.removeChild(n.firstChild);
+            r = [];
+            t = -1;
+            z(!1)
+          }
+
+          function E() {
+            var a = n.querySelector(".scs");
+            a && (a.className = "");
+            0 <= t ? (a = n.childNodes[t], a.className = "scs", q = a.textContent) : q = u;
+            l.value = q
+          }
+          l.addEventListener("focus", function () {
+            f && (f.style.display = "none")
+          }, !1);
+          l.addEventListener("blur", function () {
+            D();
+            f && (f.style.display = "")
+          }, !1);
+          l.addEventListener("keyup", function (a) {
+            q = l.value;
+            y = !1;
+            13 == a.which ? A() : 27 == a.which ? (D(), f && (f.style.display = ""), q = u, l.value = q) : 40 ==
+              a.which ? (t++, t >= r.length && (t = -1), E()) : 38 == a.which ? (t--, -1 > t && (t = r.length -
+                1), E()) : (a = q) ? (p && (p.style.display = ""), x = a, w || C(), u = a) : (p && (p.style
+                .display = "none"), z(!1), D(), u = "", y = !0)
+          }, !1);
+          m.addEventListener("click", A, !1);
+          p.addEventListener("click", function () {
+            l.value = "";
+            p.style.display = "none";
+            z(!1)
+          }, !1);
+          k.addEventListener("click", function () {
+            l.focus()
+          }, !1);
+          window.hS = function (a) {
+            if (!y) {
+              D();
+              0 == a[1].length && z(!1);
+              for (var c = 0; c < a[1].length; c++) {
+                var h = a[1][c][0],
+                  v = document.createElement("div");
+                v.innerHTML = h;
+                v.addEventListener("mousedown", function (B) {
+                  B.preventDefault();
+                  return !1
+                }, !1);
+                h = h.replace(/<\/?b>/g, "");
+                v.addEventListener("click", function (B) {
+                  return function () {
+                    t = B;
+                    A();
+                    E();
+                    D();
+                    g.submit()
+                  }
+                }(c), !1);
+                n.appendChild(v);
+                z(!0);
+                r.push(h)
+              }
+            }
+          };
+        }).call(this);
+      })();
+      (function () {
+        function b(a) {
+          for (a = a.target || a.srcElement; a && "A" != a.nodeName;) a = a.parentElement;
+          a && (a.href || "").match(/\/search.*[?&]tbm=isch/) && (a.href += "&biw=" + document.documentElement
+            .clientWidth, a.href += "&bih=" + document.documentElement.clientHeight)
+        }
+        document.addEventListener("click", b, !1);
+        document.addEventListener("touchStart", b, !1);
+      }).call(this);
+
+    </script>
+  </div><!-- cctlcm 5 cctlcm --><textarea class="csi" name="csi" style="display:none"></textarea>
+  <script nonce="wtHAyvtpU6jRh6JRHdeWag==">
+    (function () {
+      var e = '8VaWXsaoKIrZrgTo0oXQAg';
+      var sn = 'web';
+      (function () {
+        function x(a) {
+          if (!a || "none" == a.style.display) return 0;
+          if (document.defaultView && document.defaultView.getComputedStyle) {
+            var b = document.defaultView.getComputedStyle(a);
+            if (b && ("hidden" == b.visibility || "0px" == b.height && "0px" == b.width)) return 0
+          }
+          if (!a.getBoundingClientRect) return 1;
+          var c = a.getBoundingClientRect();
+          a = c.left + window.pageXOffset;
+          b = c.top + window.pageYOffset;
+          var f = c.width;
+          c = c.height;
+          var h = 0;
+          if (0 >= c && 0 >= f) return h;
+          0 > b + c ? h = 2 : b >= (window.innerHeight || document.documentElement.clientHeight) && (h = 4);
+          if (0 >
+            a + f || a >= (window.innerWidth || document.documentElement.clientWidth)) h |= 8;
+          return h || 1
+        };
+        var y = e,
+          z = sn,
+          H = [];
+
+        function I(a, b, c) {
+          a = "/gen_204?atyp=csi&s=" + (z || "web") + "&t=" + a + ("&lite=1&ei=" + y + "&conn=" + (window
+            .navigator && window.navigator.connection ? window.navigator.connection.type : -1) + b);
+          b = "&rt=";
+          for (var f in c) a += b + f + "." + c[f], b = ",";
+          return a
+        }
+
+        function J(a) {
+          a = {
+            prt: a
+          };
+          window.wsrt && (a.wsrt = window.wsrt);
+          return a
+        }
+
+        function K(a) {
+          window.ping ? window.ping(a) : (new Image).src = a
+        }
+        (function () {
+          for (var a = (new Date).getTime() - window.start, b = J(a), c = 0, f = 0, h = 0, A = document
+              .getElementsByTagName("img"), n = "&imn=" + A.length + "&biw=" + window.innerWidth + "&bih=" +
+              window.innerHeight, L = function (g, p) {
+                g.onload = function () {
+                  f = (new Date).getTime() - window.start;
+                  p && ++t == h && (c = f, B());
+                  g.onload = null
+                }
+              }, B = function () {
+                n += "&ima=" + h;
+                b.aft = c;
+                K(I("aft", n, b))
+              }, t = 0, M = 0, d = void 0; d = A[M++];) {
+            var q = x(d),
+              r = 1 == q;
+            r && ++h;
+            var m = d.hasAttribute("data-ilite"),
+              u = d.hasAttribute("data-deferred") || m,
+              C = d.getAttribute("data-src") ||
+              d.getAttribute("data-lzysrc");
+            H.push([q, u, !u && C, google.ldi && d.id && google.ldi[d.id] || m && C]);
+            m = (q = d.complete && !u) && Number(d.getAttribute("data-iml")) || 0;
+            q && m ? (r && ++t, m && (d = m - window.start, r && (c = Math.max(c, d)), f = Math.max(f, d))) : L(d,
+              r)
+          }
+          c || (c = a);
+          f || (f = c);
+          t == h && B();
+          google.rglh && google.rglh();
+          window.addEventListener("load", function () {
+            window.setTimeout(function () {
+              b.ol = (new Date).getTime() - window.start;
+              b.iml = f;
+              var g = window.performance && window.performance.timing;
+              g && (b.rqst = g.responseEnd - g.requestStart, b.rspt =
+                g.responseEnd - g.responseStart);
+              for (var p = g = 0, D = 0, E = 0, F = 0, N = 0, k; k = H[N++];) {
+                var l = k[0],
+                  v = k[1],
+                  O = k[2];
+                k = k[3];
+                var P = 0 == l,
+                  w = l & 8,
+                  G = l & 4;
+                l = 1 == l || 2 == l || w && !G;
+                !l || w || v && !k || ++D;
+                v && (l && k && ++g, G && !k && ++p);
+                P || w ? O || ++F : v || ++E
+              }
+              n += "&ime=" + D + ("&imex=" + E + "&imeh=" + F) + ("&imea=" + g + "&imeb=" + p);
+              K(I("all", n, b))
+            }, 0)
+          }, !1)
+        })();
+      }).call(this);
+    })();
+
+  </script>
+  <script nonce="wtHAyvtpU6jRh6JRHdeWag==">
+    (function () {
+      var e = '8VaWXsaoKIrZrgTo0oXQAg';
+      (function () {
+        var a = e,
+          b = window.performance && window.performance.navigation;
+        b && 2 == b.type && window.ping("/gen_204?ct=backbutton&ei=" + a);
+      }).call(this);
+    })();
+    (function () {
+      var b = [function () {
+        google.tick && google.tick("load", "dcl")
+      }];
+      google.dclc = function (a) {
+        b.length ? b.push(a) : a()
+      };
+
+      function c() {
+        for (var a; a = b.shift();) a()
+      }
+      window.addEventListener ? (document.addEventListener("DOMContentLoaded", c, !1), window.addEventListener("load",
+        c, !1)) : window.attachEvent && window.attachEvent("onload", c);
+    }).call(this);
+    (function () {
+      (function () {
+        google.csct = {};
+        google.csct.ps = 'AOvVaw25-WA0tQ3dkvXVSEyGc4td\x26ust\x3d1586997361704480';
+      })();
+    })();
+    (function () {
+      (function () {
+        google.csct.rd = true;
+      })();
+    })();
+    google.drty && google.drty();
+
+  </script>
+</body>
+
+</html>
+getting post links
+[]
+
+~/projects/python/answer
+.venv ❯ python answer/client.py
+<!doctype html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
+  <title>how run asyncio in python {'site': 'stackoverflow.com'} - Szukaj w Google</title>
+  <script nonce="vVv1p5L1MD6T6SNnCiLrrQ==">
+    (function () {
+      document.documentElement.addEventListener("submit", function (b) {
+        var a;
+        if (a = b.target) {
+          var c = a.getAttribute("data-submitfalse");
+          a = "1" == c || "q" == c && !a.elements.q.value ? !0 : !1
+        } else a = !1;
+        a && (b.preventDefault(), b.stopPropagation())
+      }, !0);
+      document.documentElement.addEventListener("click", function (b) {
+        var a;
+        a: {
+          for (a = b.target; a && a != document.documentElement; a = a.parentElement)
+            if ("A" == a.tagName) {
+              a = "1" == a.getAttribute("data-nohref");
+              break a
+            } a = !1
+        }
+        a && b.preventDefault()
+      }, !0);
+    }).call(this);
+    (function () {
+      var a = window.performance;
+      window.start = Date.now();
+      a: {
+        var b = window;
+        if (a) {
+          var c = a.timing;
+          if (c) {
+            var d = c.navigationStart,
+              f = c.responseStart;
+            if (f > d && f <= window.start) {
+              window.start = f;
+              b.wsrt = f - d;
+              break a
+            }
+          }
+          a.now && (b.wsrt = Math.floor(a.now()))
+        }
+      }
+      window.google = window.google || {};
+      var h = function (g) {
+        g && g.target.setAttribute("data-iml", Date.now())
+      };
+      document.documentElement.addEventListener("load", h, !0);
+      google.rglh = function () {
+        document.documentElement.removeEventListener("load", h, !0)
+      };
+    }).call(this);
+    (function () {
+      var c = [],
+        e = 0;
+      window.ping = function (b) {
+        -1 == b.indexOf("&zx") && (b += "&zx=" + Date.now());
+        var a = new Image,
+          d = e++;
+        c[d] = a;
+        a.onerror = a.onload = a.onabort = function () {
+          delete c[d]
+        };
+        a.src = b
+      };
+    }).call(this);
+
+  </script>
+  <style>
+    body {
+      margin: 0 auto;
+      max-width: 736px;
+      padding: 0 8px
+    }
+
+    a {
+      color: #1967D2;
+      text-decoration: none;
+      tap-highlight-color: rgba(0, 0, 0, .1)
+    }
+
+    a:visited {
+      color: #4B11A8
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    img {
+      border: 0
+    }
+
+    html {
+      font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      text-size-adjust: 100%;
+      color: #3C4043;
+      word-wrap: break-word;
+      background-color: #fff
+    }
+
+    .bRsWnc {
+      background-color: #fff;
+      border-top: 1px solid #e0e0e0;
+      height: 39px;
+      overflow: hidden
+    }
+
+    .N6RWV {
+      height: 51px;
+      overflow-scrolling: touch;
+      overflow-x: auto;
+      overflow-y: hidden
+    }
+
+    .Uv67qb {
+      box-pack: justify;
+      font-size: 12px;
+      line-height: 37px;
+      justify-content: space-between;
+      justify-content: space-between
+    }
+
+    .Uv67qb a,
+    .Uv67qb span {
+      color: #757575;
+      display: block;
+      flex: none;
+      padding: 0 16px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    span.OXXup {
+      border-bottom: 2px solid #4285f4;
+      color: #4285f4;
+      font-weight: bold
+    }
+
+    a.eZt8xd:visited {
+      color: #757575
+    }
+
+    .FElbsf {
+      border-left: 1px solid rgba(0, 0, 0, .12)
+    }
+
+    header article {
+      overflow: visible
+    }
+
+    .Pg70bf {
+      height: 39px;
+      display: box;
+      display: flex;
+      display: flex;
+      width: 100%
+    }
+
+    .H0PQec {
+      position: relative;
+      flex: 1
+    }
+
+    .sbc {
+      display: flex;
+      width: 100%
+    }
+
+    .Pg70bf input {
+      margin: 2px 4px 2px 8px;
+    }
+
+    .x {
+      width: 26px;
+      color: #757575;
+      font: 27px/38px arial, sans-serif;
+      line-height: 40px;
+    }
+
+    #qdClwb {
+      flex: 0 0 auto;
+      width: 39px;
+      height: 39px;
+      border-bottom: 0;
+      padding: 0;
+      border-top-right-radius: 8px;
+      background-color: #3b78e7;
+      border: 1px solid #3367d6;
+      background-image: url(data:image/gif;base64,R0lGODdhJAAjAPIHAODr/nCk+MPZ/FmV96zK+/7+/5K5+kqL9iwAAAAAJAAjAEADani63P4wykmbKcQRXDscQAEMXmmeaLQVLCukzyC09AjfeK7v/MAajACLhPMVAgwjsUcEiZa8xgAYrVqv2Kx2iwsIAAABknfBBAKrTE4IcMyot8ur8datqIbQfJdnAfo2WE6BV05wXIiJigkAOw==);
+    }
+
+    .sc {
+      font-size: ;
+      position: absolute;
+      top: 39px;
+      left: 0;
+      right: 0;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+      z-index: 2;
+      background-color: #fff
+    }
+
+    .sc>div {
+      padding: 10px 10px;
+      padding-left: 16px;
+      padding-left: 14px;
+      border-top: 1px solid #DFE1E5
+    }
+
+    .scs {
+      background-color: #f5f5f5;
+    }
+
+    .noHIxc {
+      display: block;
+      font-size: 16px;
+      padding: 0 0 0 8px;
+      flex: 1;
+      height: 35px;
+      outline: none;
+      border: none;
+      width: 100%;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      overflow: hidden;
+    }
+
+    .sbc input[type=text] {
+      background: none
+    }
+
+    .sml .cOl4Id {
+      display: none
+    }
+
+    .l {
+      display: none
+    }
+
+    .sml header {
+      background: none
+    }
+
+    .sml .l {
+      display: block;
+      padding: 0 8px
+    }
+
+    .sml .l {
+      letter-spacing: -1px;
+      text-align: center;
+      border-radius: 2px 0 0 0;
+      font: 22px/36px Futura, Arial, sans-serif;
+      font-smoothing: antialiased
+    }
+
+    .bz1lBb {
+      background: #fff;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.18);
+      margin-top: 10px
+    }
+
+    .KP7LCb {
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 2px 3px rgba(32, 33, 36, 0.18);
+      margin-bottom: 10px;
+      overflow: hidden
+    }
+
+    .cOl4Id {
+      letter-spacing: -1px;
+      text-align: center;
+      font: 22pt Futura, Arial, sans-serif;
+      padding: 10px 0 5px 0;
+      height: 37px;
+      font-smoothing: antialiased
+    }
+
+    .cOl4Id span {
+      display: inline-block
+    }
+
+    .S591j {
+      height: 100%
+    }
+
+    .V6gwVd {
+      color: #4285f4
+    }
+
+    .iWkuvd {
+      color: #ea4335
+    }
+
+    .cDrQ7 {
+      color: #fbcc05
+    }
+
+    .ntlR9 {
+      color: #34a853
+    }
+
+    .tJ3Myc {
+      -webkit-transform: rotate(-20deg);
+      position: relative;
+      left: -1px;
+      display: inline-block
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 18px
+    }
+
+    footer a,
+    footer a:visited,
+    .smiUbb {
+      color: #5f6368
+    }
+
+    .ksTU4c {
+      margin: 0 13px
+    }
+
+    #mCljob {
+      margin-top: 36px
+    }
+
+    #mCljob>div {
+      margin: 20px
+    }
+
+  </style>
+</head>
+
+<body jsmodel=" TvHxbe">
+  <header id="hdr">
+    <script nonce="vVv1p5L1MD6T6SNnCiLrrQ==">
+      (function () {
+        var c = 500;
+        (function () {
+          window.screen && window.screen.width <= c && window.screen.height <= c && document.getElementById("hdr")
+            .classList.add("sml");
+        }).call(this);
+      })();
+
+    </script>
+    <div class="cOl4Id"><a href="/?sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQOwgC"><span
+          class="V6gwVd">G</span><span class="iWkuvd">o</span><span class="cDrQ7">o</span><span
+          class="V6gwVd">g</span><span class="ntlR9">l</span><span class="iWkuvd tJ3Myc">e</span></a></div>
+    <div class="bz1lBb">
+      <form class="Pg70bf" id="sf"><a class="l"
+          href="/?output=search&amp;ie=UTF-8&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQPAgE"><span
+            class="V6gwVd">G</span><span class="iWkuvd">o</span><span class="cDrQ7">o</span><span
+            class="V6gwVd">g</span><span class="ntlR9">l</span><span class="iWkuvd tJ3Myc">e</span></a><input name="ie"
+          value="ISO-8859-1" type="hidden">
+        <div class="H0PQec">
+          <div class="sbc esbc"><input class="noHIxc" value="how run asyncio in python {'site': 'stackoverflow.com'}"
+              autocapitalize="none" autocomplete="off" name="q" spellcheck="false" type="text"><input name="oq"
+              type="hidden"><input name="aqs" type="hidden">
+            <div class="x">×</div>
+            <div class="sc"></div>
+          </div>
+        </div><button id="qdClwb" type="submit"></button>
+      </form>
+    </div><noscript>
+      <meta
+        content="0;url=/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;gbv=1&amp;sei=QFeWXo3POqSqrgSSpoe4CA"
+        http-equiv="refresh">
+      <style>
+        table,
+        div,
+        span,
+        p {
+          display: none
+        }
+
+      </style>
+      <div style="display:block">Je&#347;li w ci&#261;gu kilku sekund nie nast&#261;pi przekierowanie, kliknij <a
+          href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;gbv=1&amp;sei=QFeWXo3POqSqrgSSpoe4CA">tutaj</a>.
+      </div>
+    </noscript>
+  </header>
+  <div id="main">
+    <div>
+      <div class="KP7LCb">
+        <div class="bRsWnc">
+          <div class="N6RWV">
+            <div class="Pg70bf Uv67qb"> <span class="OXXup">Wszystko</span><a class="eZt8xd"
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=vid&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ_AUICCgB">Filmy</a><a
+                class="eZt8xd"
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ_AUICSgC">Grafika</a><a
+                class="eZt8xd"
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=shop&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ_AUICigD">Zakupy</a>
+              <a
+                href="https://maps.google.com/maps?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ_AUICygE">Mapy</a>
+              <a
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=nws&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ_AUIDCgF">Wiadomo&#347;ci</a>
+              <a
+                href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnms&amp;tbm=bks&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ_AUIDSgG">Ksi&#261;&#380;ki</a>
+              <div class="FElbsf"><a href="/advanced_search" style="white-space:nowrap" id="st-toggle"
+                  role="button">Narz&#281;dzia wyszukiwania</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Pg70bf wEsjbd ZINbbc xpd O9g5cc uUPGi" style="display:none" id="st-card">
+        <style>
+          .wEsjbd {
+            background-color: #fff;
+            height: 44px;
+            white-space: nowrap
+          }
+
+          .coPU8c {
+            height: 60px;
+            overflow-scrolling: touch;
+            overflow-x: auto;
+            overflow-y: hidden
+          }
+
+          .Xj2aue {
+            height: 44px;
+            overflow: hidden
+          }
+
+          .RnNGze {
+            margin: 11px 16px
+          }
+
+          .wEsjbd div,
+          .wEsjbd a,
+          .wEsjbd li {
+            outline-width: 0;
+            outline: none
+          }
+
+        </style>
+        <div class="Xj2aue">
+          <div class="coPU8c">
+            <div class="RnNGze">
+              <style>
+                .PA9J5 {
+                  display: inline-block
+                }
+
+                .RXaOfd {
+                  display: inline-block;
+                  height: 22px;
+                  position: relative;
+                  padding-top: 0;
+                  padding-bottom: 0;
+                  padding-right: 16px;
+                  padding-left: 0;
+                  line-height: 22px;
+                  cursor: pointer;
+                  text-transform: uppercase;
+                  font-size: 12px;
+                  color: #757575
+                }
+
+                .sa1toc {
+                  display: none;
+                  position: absolute;
+                  background: #fff;
+                  border: 1px solid #d6d6d6;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                  margin: 0;
+                  white-space: nowrap;
+                  z-index: 103;
+                  line-height: 17px;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  padding-left: 0px
+                }
+
+                .PA9J5:hover .sa1toc {
+                  display: block
+                }
+
+                .mGSy8d a:active,
+                .RXaOfd:active {
+                  color: #4285f4
+                }
+
+              </style>
+              <div class="PA9J5">
+                <div class="RXaOfd" role="button" tabindex="0">
+                  <style>
+                    .TWMOUc {
+                      display: inline-block;
+                      padding-right: 14px;
+                      white-space: nowrap
+                    }
+
+                    .vQYuGf {
+                      font-weight: bold
+                    }
+
+                    .OmTIzf {
+                      border-color: #909090 transparent;
+                      border-style: solid;
+                      border-width: 4px 4px 0 4px;
+                      width: 0;
+                      height: 0;
+                      margin-left: -10px;
+                      top: 50%;
+                      margin-top: -2px;
+                      position: absolute
+                    }
+
+                    .RXaOfd:active .OmTIzf {
+                      border-color: #4285f4 transparent
+                    }
+
+                  </style>
+                  <div class="TWMOUc">Dowolny j&#281;zyk</div><span class="OmTIzf"></span>
+                </div>
+                <ul class="sa1toc ozatM">
+                  <style>
+                    .ozatM {
+                      font-size: 12px;
+                      text-transform: uppercase
+                    }
+
+                    .ozatM .yNFsl,
+                    .ozatM li {
+                      list-style-type: none;
+                      list-style-position: outside;
+                      list-style-image: none
+                    }
+
+                    .yNFsl.SkUj4c,
+                    .yNFsl a {
+                      color: rgba(0, 0, 0, 0.54);
+                      text-decoration: none;
+                      padding: 6px 44px 6px 14px;
+                      line-height: 17px;
+                      display: block
+                    }
+
+                    .SkUj4c {
+                      background-image: url(//ssl.gstatic.com/ui/v1/menu/checkmark2.png);
+                      background-position: right center;
+                      background-repeat: no-repeat
+                    }
+
+                    .SkUj4c:active {
+                      background-color: #f5f5f5
+                    }
+
+                  </style>
+                  <li class="yNFsl SkUj4c">Dowolny j&#281;zyk</li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=lr:lang_1pl&amp;lr=lang_pl&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIDw">Tylko
+                      j&#281;zyk polski</a></li>
+                </ul>
+              </div>
+              <div class="PA9J5">
+                <div class="RXaOfd" role="button" tabindex="0">
+                  <div class="TWMOUc">Kiedykolwiek</div><span class="OmTIzf"></span>
+                </div>
+                <ul class="sa1toc ozatM">
+                  <li class="yNFsl SkUj4c">Kiedykolwiek</li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:h&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIEQ">
+                      Ostatnia godzina</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:d&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIEg">
+                      Ostatnie 24 godziny</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:w&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIEw">
+                      Ostatni tydzie&#324;</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:m&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIFA">
+                      Ostatni miesi&#261;c</a></li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=qdr:y&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIFQ">
+                      Ostatni rok</a></li>
+                </ul>
+              </div>
+              <div class="PA9J5">
+                <div class="RXaOfd" role="button" tabindex="0">
+                  <div class="TWMOUc">Wszystkie wyniki</div><span class="OmTIzf"></span>
+                </div>
+                <ul class="sa1toc ozatM">
+                  <li class="yNFsl SkUj4c">Wszystkie wyniki</li>
+                  <li class="yNFsl"><a
+                      href="/search?q=how+run+asyncio+in+python+%7B%27site%27:+%27stackoverflow.com%27%7D&amp;ie=UTF-8&amp;source=lnt&amp;tbs=li:1&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQpwUIFw">Dok&#322;adnie</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script nonce="vVv1p5L1MD6T6SNnCiLrrQ==">
+          (function () {
+            var a = document.getElementById("st-toggle"),
+              b = document.getElementById("st-card");
+            a && b && a.addEventListener("click", function (c) {
+              b.style.display = b.style.display ? "" : "none";
+              c.preventDefault()
+            }, !1);
+          }).call(this);
+
+        </script>
+      </div>
+    </div>
+    <style>
+      .ZINbbc {
+        background-color: #fff;
+        margin-bottom: 10px;
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        border-radius: 8px
+      }
+
+      .uUPGi {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .O9g5cc>*:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px
+      }
+
+      .O9g5cc>*:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px
+      }
+
+      .O9g5cc>.qxDOhb>*:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px
+      }
+
+      .O9g5cc>.qxDOhb>*:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px
+      }
+
+      .rLshyf,
+      .BmP5tf {
+        padding-top: 12px;
+        padding-bottom: 12px
+      }
+
+      .w1C3Le,
+      .BmP5tf,
+      .G5NbBd {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .G5NbBd {
+        padding-bottom: 12px
+      }
+
+      .MUxGbd {
+        font-size: 14px;
+        font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+        line-height: 20px;
+        padding-top: 1px;
+        margin-bottom: -1px
+      }
+
+      .MUxGbd.v0nnCb {
+        font-size: 16px;
+        line-height: 20px;
+        padding-top: 1px;
+        margin-bottom: -1px
+      }
+
+      .lyLwlc {
+        color: #202124
+      }
+
+      a.fdYsqf {
+        color: #4B11A8
+      }
+
+      .rl7ilb {
+        display: block;
+        clear: both
+      }
+
+      .kCrYT {
+        padding: 12px 16px 12px
+      }
+
+      .BNeawe {
+        white-space: pre-line;
+        word-wrap: break-word
+      }
+
+      .vvjwJb {
+        color: #1967D2;
+        font-size: 16px;
+        line-height: 20px
+      }
+
+      .vvjwJb a:visited {
+        color: #4B11A8
+      }
+
+      .vvjwJb.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .vvjwJb.HrGdeb a:visited {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .UPmit {
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .UPmit.HrGdeb {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .UPmit.AP7Wnd {
+        color: rgba(0, 102, 33, 1)
+      }
+
+      .x54gtf {
+        height: 1px;
+        background-color: #dfe1e5;
+        margin: 0 16px
+      }
+
+      .Q0HXG {
+        height: 1px;
+        background-color: #dfe1e5
+      }
+
+      .Ap5OSd {
+        padding-bottom: 12px
+      }
+
+      .s3v9rd {
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .s3v9rd.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .s3v9rd.AP7Wnd {
+        color: #202124
+      }
+
+      .mSx1Ee {
+        padding-left: 48px;
+        margin: 0
+      }
+
+      .v9i61e {
+        padding-bottom: 8px
+      }
+
+      .XLloXe {
+        color: #1967D2;
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .XLloXe a:visited {
+        color: #4B11A8
+      }
+
+      .XLloXe.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .XLloXe.HrGdeb a:visited {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .hfgVwf {
+        margin-top: 12px
+      }
+
+      .IxZjcf .hfgVwf {
+        margin-bottom: 12px
+      }
+
+      .OdF8Fd {
+        float: right;
+        padding-left: 16px
+      }
+
+      .p1vimb {
+        border-radius: 8px;
+        display: block
+      }
+
+      .rkvY3c {
+        clear: both
+      }
+
+      .CgE3Ac {
+        margin: 0 16px
+      }
+
+      .I9mEQ {
+        padding-bottom: 12px
+      }
+
+      .LnMnt {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%
+      }
+
+      .LnMnt td {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 8px
+      }
+
+      .LnMnt .s5aIid {
+        padding-right: 0
+      }
+
+      .IxZjcf {
+        border-bottom: 1px solid #dfe1e5
+      }
+
+      .sjsZvd {
+        vertical-align: top
+      }
+
+      .IfyLsd {
+        float: left;
+        margin-right: 8px
+      }
+
+      .OE1use {
+        text-align: left
+      }
+
+      .BSv1qf {
+        text-align: center
+      }
+
+      .HlHBvc {
+        text-align: right
+      }
+
+      .r0bn4c.tr0dw {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .r0bn4c.rQMQod {
+        color: #70757A
+      }
+
+      .tAd8D {
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .tAd8D.HrGdeb {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .tAd8D.AP7Wnd {
+        color: #70757A
+      }
+
+      .ko6Hn {
+        text-decoration: underline
+      }
+
+      .ZTv9Bb {
+        display: block
+      }
+
+      .nVTMpe {
+        border-radius: 8px
+      }
+
+      .deIvCb {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 400
+      }
+
+      .deIvCb.HrGdeb {
+        color: rgba(255, 255, 255, 1)
+      }
+
+      .deIvCb.AP7Wnd {
+        color: #202124
+      }
+
+      .FCUp0c {
+        font-weight: bold
+      }
+
+      .X7NTVe {
+        display: table;
+        width: 100%;
+        padding-right: 16px;
+        box-sizing: border-box
+      }
+
+      .tHmfQe {
+        display: table-cell;
+        padding: 12px 0 12px 16px
+      }
+
+      .UHtrk {
+        width: 72px
+      }
+
+      .HBTM6d {
+        width: 30px
+      }
+
+      .XS7yGd {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 12px 0 12px 8px
+      }
+
+      .am3QBf {
+        display: table;
+        vertical-align: top
+      }
+
+      .Icx6Cd {
+        margin: 0 auto 8px
+      }
+
+      .mAdjQc {
+        text-align: right
+      }
+
+      .uEec3 {
+        font-size: 12px;
+        line-height: 16px
+      }
+
+      .uEec3.HrGdeb {
+        color: rgba(255, 255, 255, .7)
+      }
+
+      .uEec3.AP7Wnd {
+        color: #70757A
+      }
+
+    </style>
+    <div>
+      <!--SW_C_X-->
+    </div>
+    <div class="ZINbbc xpd O9g5cc uUPGi">
+      <div id="scc" class="BmP5tf">
+        <div class="MUxGbd v0nnCb lyLwlc">Czy chodzi&#322;o Ci o: <a
+            href="/search?ie=UTF-8&amp;q=how+run+async+in+python+%7B'site':+'stackoverflow.com'%7D&amp;spell=1&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQBXoECAwQAQ">how
+            run <b>async</b> in python {'site': 'stackoverflow.com'}</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/questions/49005651/how-does-asyncio-actually-work&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjAAegQIChAB&amp;usg=AOvVaw0tuEcOIpcX-lN-E7jrtnQv">
+            <div class="BNeawe vvjwJb AP7Wnd">How does asyncio actually work? - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; questions &#8250;
+              how-does-asyncio-actually-work</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="Ap5OSd">
+                    <div class="BNeawe s3v9rd AP7Wnd">How does asyncio work? Before answering this question we need to
+                      understand a few base terms, skip these if you already know any of them. Generators.</div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/49119793/understanding-python-concurrency-with-asyncio&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQrAIwAHoECAoQAg&amp;usg=AOvVaw1a0qmdhkx7ncEvk9hRFDX0"><span
+                            class="XLloXe AP7Wnd">Understanding Python Concurrency with Asyncio - Stack
+                            Overflow</span></a></span></div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/50634083/python-how-to-make-tasks-run-asynchronously-using-asyncio&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQrAIwAHoECAoQAw&amp;usg=AOvVaw3IsWaNMboBK_6JtFHwRzvN"><span
+                            class="XLloXe AP7Wnd">Python - How to make tasks run asynchronously using asyncio
+                            ...</span></a></span></div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/41283091/how-to-use-async-await-in-python-3-5&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQrAIwAHoECAoQBA&amp;usg=AOvVaw2PEYR5YaHvvdYCFX4GbIim"><span
+                            class="XLloXe AP7Wnd">How to use async/await in python 3.5+ - Stack
+                            Overflow</span></a></span></div>
+                  </div>
+                  <div class="v9i61e">
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/url?q=https://stackoverflow.com/questions/57876923/python-3-6-async-function-over-loop-in-the-simplest-way-possible&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQrAIwAHoECAoQBQ&amp;usg=AOvVaw1P7uKe-zEtD2ClxOtetcm9"><span
+                            class="XLloXe AP7Wnd">Python 3.6 async function over loop in the simplest ... - Stack
+                            Overflow</span></a></span></div>
+                  </div>
+                  <div>
+                    <div class="BNeawe s3v9rd AP7Wnd"><span class="BNeawe"><a
+                          href="/search?q=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D+site:stackoverflow.com&amp;ie=UTF-8"><span
+                            class="XLloXe AP7Wnd">Wi&#281;cej wyników z stackoverflow.com</span></a></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/tags/python-asyncio/info&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjABegQICxAB&amp;usg=AOvVaw2GzqzsHxyq1f5IvIRFFrAq">
+            <div class="BNeawe vvjwJb AP7Wnd">'python-asyncio' tag wiki - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; tags &#8250; python-asyncio &#8250; info
+            </div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">By using our site, you acknowledge that you have read and understand
+                    our Cookie Policy, ... This tag is to be used for the asyncio Python package which provides ...
+                    resources, running network clients and servers, and other related primitives.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/a/49007291&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjACegQIABAB&amp;usg=AOvVaw224fxdsAs2gja2jSPrPxpJ">
+            <div class="BNeawe vvjwJb AP7Wnd">python - How does asyncio actually work? - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; ...</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">By using our site, you acknowledge that you have read and understand
+                    our ... Before async and await were introduced in Python 3.5, we created coroutines in the exact ...
+                    But it's not how asyncio works, it's how select and sockets work which is ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/questions/49119793/understanding-python-concurrency-with-asyncio%3Frq%3D1&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjADegQIAxAB&amp;usg=AOvVaw1jkhQvDub4F3PD5lqzWa7M">
+            <div class="BNeawe vvjwJb AP7Wnd">Understanding Python Concurrency with Asyncio - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; questions &#8250;
+              understanding-python-concurrency...</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">import asyncio import time async def myWorker(lock, i):
+                    print("Attempting to attain lock {}".format(i)) # acquire lock with await lock: # run critical
+                    section of code ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/questions/tagged/python-asyncio&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjAEegQICBAB&amp;usg=AOvVaw2eJqferJbh3MZsfD4sAZgx">
+            <div class="BNeawe vvjwJb AP7Wnd">Newest 'python-asyncio' Questions - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; questions &#8250; tagged &#8250;
+              python-asyncio</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">This tag is to be used for the asyncio Python package which provides
+                    mechanisms for writing ... How to kill all background async process run through python?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://stackoverflow.com/tags/python-asyncio/hot&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjAFegQIBxAB&amp;usg=AOvVaw3TL255qHtd1gIuMAIIQwDw">
+            <div class="BNeawe vvjwJb AP7Wnd">Hottest 'python-asyncio' Answers - Stack Overflow</div>
+            <div class="BNeawe UPmit AP7Wnd">https://stackoverflow.com &#8250; tags &#8250; python-asyncio &#8250; hot
+            </div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">Python asyncio: Enter into a temporary async context? I can't use
+                    asyncio.run(), because the caller could already have a running event loop and you can only ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="https://books.google.pl/books?id=89W8DwAAQBAJ&amp;pg=PT566&amp;lpg=PT566&amp;dq=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D&amp;source=bl&amp;ots=yT2zt-B8Gc&amp;sig=ACfU3U1_9m8tVgDyn2u-sJyFa4V7zaH85w&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ6AEwBnoECAQQAQ">
+            <div class="BNeawe vvjwJb AP7Wnd">Introducing Python: Modern Computing in Simple Packages</div>
+            <div class="BNeawe UPmit AP7Wnd">https://books.google.pl &#8250; books</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">await asyncio.sleep(seconds) . ... asyncio.run(wicked()) Surrender,
+                    Dorothy! ... web-crawling example using trio and asks, adapted from a stackoverflow answer.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="https://books.google.pl/books?id=j1_NDwAAQBAJ&amp;pg=PA132&amp;lpg=PA132&amp;dq=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D&amp;source=bl&amp;ots=cdeTIlaVOh&amp;sig=ACfU3U0eyltb8SKm8TwqdNgvEMsc-cxDWg&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ6AEwB3oECAUQAQ">
+            <div class="BNeawe vvjwJb AP7Wnd">Using Asyncio in Python: Understanding Python's Asynchronous ...</div>
+            <div class="BNeawe UPmit AP7Wnd">https://books.google.pl &#8250; books</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">2013 on Stack Overflow Support for so-called asynchronous features
+                    was ... to manage multiple socket events in a single thread in Python back then (and, in fact ...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="https://books.google.pl/books?id=nHDtDAAAQBAJ&amp;pg=PA225&amp;lpg=PA225&amp;dq=how+run+asyncio+in+python+%7B'site':+'stackoverflow.com'%7D&amp;source=bl&amp;ots=ky7TMea_Sq&amp;sig=ACfU3U2dVqxsuviNW4sIn_EIar85XmHZ4w&amp;hl=pl&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ6AEwCHoECAYQAQ">
+            <div class="BNeawe vvjwJb AP7Wnd">The Hitchhiker's Guide to Python: Best Practices for Development</div>
+            <div class="BNeawe UPmit AP7Wnd">https://books.google.pl &#8250; books</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">Jeff Knupp, author of Writing Idiomatic Python, wrote a blog post
+                    about getting ... GIL (at least in CPython), there will only be one Python process running per
+                    Python ... For that, see the paragraphs on asyncio in &#8220;Performance networking tools in ...
+                    There's a good example use of threading on Stack Overflow, and the Python ...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT"><a
+            href="/url?q=https://docs.python.org/3/whatsnew/changelog.html&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQFjAJegQICRAB&amp;usg=AOvVaw2RXTALYhfz9wI7UVbedMHF">
+            <div class="BNeawe vvjwJb AP7Wnd">Changelog &#8212; Python 3.8.2 documentation</div>
+            <div class="BNeawe UPmit AP7Wnd">https://docs.python.org &#8250; whatsnew &#8250; changelog</div>
+          </a></div>
+        <div class="x54gtf"></div>
+        <div class="kCrYT">
+          <div>
+            <div class="BNeawe s3v9rd AP7Wnd">
+              <div>
+                <div>
+                  <div class="BNeawe s3v9rd AP7Wnd">bpo-39191: Perform a check for running loop before starting a new
+                    task in ... bpo- 39006: Fix asyncio when the ssl module is missing: only check for ssl. ...
+                    DocXMLRPCServer when rendering the document page as HTML. ... repr of deeply nested dict now raises
+                    a RecursionError instead of crashing due to a stack overflow.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div>
+          <div class="CgE3Ac I9mEQ">
+            <table class="LnMnt">
+              <tbody>
+                <tr>
+                  <td class="sjsZvd s5aIid OE1use">
+                    <div class="hfgVwf">
+                      <div class="BNeawe s3v9rd AP7Wnd"><span class="r0bn4c rQMQod">Aby pokaza&#263; najbardziej trafne
+                          wyniki, pomin&#281;li&#347;my kilka pozycji bardzo podobnych do 10 ju&#380;
+                          wy&#347;wietlonych.
+                          Je&#347;li chcesz, mo&#380;esz </span><span class="BNeawe"><a
+                            href="/url?q=/search%3Fq%3Dhow%2Brun%2Basyncio%2Bin%2Bpython%2B%257B'site':%2B'stackoverflow.com'%257D%26ie%3DUTF-8%26filter%3D0&amp;sa=U&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ880BegQIAhAB&amp;usg=AOvVaw0fzOJbcL6JyoTinds_0zWh"><span
+                              class="tAd8D AP7Wnd"><span class="ko6Hn r0bn4c rQMQod">powtórzy&#263; wyszukiwanie z
+                                uwzgl&#281;dnieniem pomini&#281;tych wyników</span></span></a></span><span
+                          class="r0bn4c rQMQod">.</span></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="hwc"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ZINbbc xpd O9g5cc uUPGi">
+        <div class="kCrYT">
+          <div class="q4vBJc"></div><span>
+            <div class="BNeawe deIvCb AP7Wnd"><span class="FCUp0c rQMQod">Podobne wyszukiwania</span></div>
+          </span>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=python+3.8.2+download&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAE">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">python 3.8.2 download</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=python+3.8.2+download">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAI">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.8+tutorial&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAM">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Https docs python org 3.8 tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.8+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Http+docs+python+org+tutorial&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAQ">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Http docs python org tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Http+docs+python+org+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.7+tutorial&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAU">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Https docs python org 3.7 tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Https+docs+python+org+3.7+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python+3.7+examples&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAY">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python 3.7 examples</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python+3.7+examples">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python+3.8+1+interpreter&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAc">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python 3.8 1 interpreter</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python+3.8+1+interpreter">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+        <div class="Q0HXG"></div>
+        <div class="X7NTVe"><a class="tHmfQe"
+            href="/search?ie=UTF-8&amp;q=Python+3.8+0+tutorial&amp;sa=X&amp;ved=2ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ1QJ6BAgBEAg">
+            <div class="am3QBf">
+              <div><span>
+                  <div class="BNeawe deIvCb AP7Wnd">Python 3.8 0 tutorial</div>
+                </span></div>
+            </div>
+          </a>
+          <div class="HBTM6d XS7yGd"><a href="/search?ie=UTF-8&amp;q=Python+3.8+0+tutorial">
+              <div class="BNeawe mAdjQc uEec3 AP7Wnd">&gt;</div>
+            </a></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div> </div>
+      <div id="mCljob">
+        <div><a
+            href="/url?q=https://accounts.google.com/ServiceLogin%3Fcontinue%3Dhttps://www.google.com/search%253Fq%253D%25257B%252527site%252527:%252B%252527stackoverflow.com%252527%25257D%26hl%3Dpl&amp;sa=U&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQxs8CCEE&amp;usg=AOvVaw3CFe7n51nWYK7-SsurcHwo">Zaloguj
+            si&#281;</a></div>
+        <div><a class="ksTU4c"
+            href="https://www.google.com/preferences?hl=pl&amp;fg=1&amp;sa=X&amp;ved=0ahUKEwiN74unmOnoAhUklYsKHRLTAYcQ5fUCCEI">Ustawienia</a><a
+            class="ksTU4c" href="//policies.google.com/privacy?fg=1">Prywatno&#347;&#263;</a><a class="ksTU4c"
+            href="//policies.google.com/terms?fg=1">Warunki</a></div>
+      </div>
+    </footer>
+    <script nonce="vVv1p5L1MD6T6SNnCiLrrQ==">
+      (function () {
+        var hl = 'pl';
+        (function () {
+          var b = this || self,
+            d = /^[\w+/_-]+[=]{0,2}$/,
+            e = null;
+          var f = document.querySelector(".l"),
+            g = document.querySelector("#sf"),
+            k = g.querySelector(".sbc"),
+            l = g.querySelector("[type=text]"),
+            m = g.querySelector("[type=submit]"),
+            n = g.querySelector(".sc"),
+            p = g.querySelector(".x"),
+            q = l.value,
+            r = [],
+            t = -1,
+            u = q,
+            w, x, y;
+          q || (p && (p.style.display = "none"), z(!1));
+
+          function z(a) {
+            if (k.classList.contains("esbc")) {
+              var c = k.classList.contains("chsbc"),
+                h = k.classList.contains("rtlsbc");
+              a && (n.style.display = "block", c ? (g.style.borderRadius = "20px 20px 0 0", n.style.borderBottom =
+                  "1px solid #DFE1E5", m.style.borderRadius = h ? "20px 0 0 0" : "0 20px 0 0") : k.style
+                .borderRadius = h ? "0 8px 0 0" : "8px 0 0 0");
+              a || (n.style.display = "none", c ? (g.style.borderRadius = "20px", n.style.borderBottom = "none", m
+                  .style.borderRadius = h ? "20px 0 0 20px" : "0 20px 20px 0") : k.style.borderRadius = h ?
+                "0 8px 8px 0" : "8px 0 0 8px")
+            }
+          }
+
+          function A() {
+            g.querySelector("[name=oq]").value = u;
+            g.querySelector("[name=aqs]").value = "heirloom-srp." + (0 <= t ? t : "") + "." + (0 < r.length ? "0l" +
+              r.length : "")
+          }
+
+          function C() {
+            w = null;
+            if (x) {
+              var a = "/complete/search?client=heirloom-srp&hl=" + hl + "&json=t&callback=hS&q=" +
+                encodeURIComponent(x);
+              "undefined" !== typeof ds && ds && (a += "&ds=" + ds);
+              var c = document.createElement("script");
+              c.src = a;
+              if (null === e) a: {
+                a = b.document;
+                if ((a = a.querySelector && a.querySelector("script[nonce]")) && (a = a.nonce || a.getAttribute(
+                    "nonce")) && d.test(a)) {
+                  e = a;
+                  break a
+                }
+                e = ""
+              }(a = e) && c.setAttribute("nonce", a);
+              document.body.appendChild(c);
+              x = null;
+              w = setTimeout(C, 500)
+            }
+          }
+
+          function D() {
+            for (; n.firstChild;) n.removeChild(n.firstChild);
+            r = [];
+            t = -1;
+            z(!1)
+          }
+
+          function E() {
+            var a = n.querySelector(".scs");
+            a && (a.className = "");
+            0 <= t ? (a = n.childNodes[t], a.className = "scs", q = a.textContent) : q = u;
+            l.value = q
+          }
+          l.addEventListener("focus", function () {
+            f && (f.style.display = "none")
+          }, !1);
+          l.addEventListener("blur", function () {
+            D();
+            f && (f.style.display = "")
+          }, !1);
+          l.addEventListener("keyup", function (a) {
+            q = l.value;
+            y = !1;
+            13 == a.which ? A() : 27 == a.which ? (D(), f && (f.style.display = ""), q = u, l.value = q) : 40 ==
+              a.which ? (t++, t >= r.length && (t = -1), E()) : 38 == a.which ? (t--, -1 > t && (t = r.length -
+                1), E()) : (a = q) ? (p && (p.style.display = ""), x = a, w || C(), u = a) : (p && (p.style
+                .display = "none"), z(!1), D(), u = "", y = !0)
+          }, !1);
+          m.addEventListener("click", A, !1);
+          p.addEventListener("click", function () {
+            l.value = "";
+            p.style.display = "none";
+            z(!1)
+          }, !1);
+          k.addEventListener("click", function () {
+            l.focus()
+          }, !1);
+          window.hS = function (a) {
+            if (!y) {
+              D();
+              0 == a[1].length && z(!1);
+              for (var c = 0; c < a[1].length; c++) {
+                var h = a[1][c][0],
+                  v = document.createElement("div");
+                v.innerHTML = h;
+                v.addEventListener("mousedown", function (B) {
+                  B.preventDefault();
+                  return !1
+                }, !1);
+                h = h.replace(/<\/?b>/g, "");
+                v.addEventListener("click", function (B) {
+                  return function () {
+                    t = B;
+                    A();
+                    E();
+                    D();
+                    g.submit()
+                  }
+                }(c), !1);
+                n.appendChild(v);
+                z(!0);
+                r.push(h)
+              }
+            }
+          };
+        }).call(this);
+      })();
+      (function () {
+        function b(a) {
+          for (a = a.target || a.srcElement; a && "A" != a.nodeName;) a = a.parentElement;
+          a && (a.href || "").match(/\/search.*[?&]tbm=isch/) && (a.href += "&biw=" + document.documentElement
+            .clientWidth, a.href += "&bih=" + document.documentElement.clientHeight)
+        }
+        document.addEventListener("click", b, !1);
+        document.addEventListener("touchStart", b, !1);
+      }).call(this);
+
+    </script>
+  </div><!-- cctlcm 5 cctlcm --><textarea class="csi" name="csi" style="display:none"></textarea>
+  <script nonce="vVv1p5L1MD6T6SNnCiLrrQ==">
+    (function () {
+      var e = 'QFeWXo3POqSqrgSSpoe4CA';
+      var sn = 'web';
+      (function () {
+        function x(a) {
+          if (!a || "none" == a.style.display) return 0;
+          if (document.defaultView && document.defaultView.getComputedStyle) {
+            var b = document.defaultView.getComputedStyle(a);
+            if (b && ("hidden" == b.visibility || "0px" == b.height && "0px" == b.width)) return 0
+          }
+          if (!a.getBoundingClientRect) return 1;
+          var c = a.getBoundingClientRect();
+          a = c.left + window.pageXOffset;
+          b = c.top + window.pageYOffset;
+          var f = c.width;
+          c = c.height;
+          var h = 0;
+          if (0 >= c && 0 >= f) return h;
+          0 > b + c ? h = 2 : b >= (window.innerHeight || document.documentElement.clientHeight) && (h = 4);
+          if (0 >
+            a + f || a >= (window.innerWidth || document.documentElement.clientWidth)) h |= 8;
+          return h || 1
+        };
+        var y = e,
+          z = sn,
+          H = [];
+
+        function I(a, b, c) {
+          a = "/gen_204?atyp=csi&s=" + (z || "web") + "&t=" + a + ("&lite=1&ei=" + y + "&conn=" + (window
+            .navigator && window.navigator.connection ? window.navigator.connection.type : -1) + b);
+          b = "&rt=";
+          for (var f in c) a += b + f + "." + c[f], b = ",";
+          return a
+        }
+
+        function J(a) {
+          a = {
+            prt: a
+          };
+          window.wsrt && (a.wsrt = window.wsrt);
+          return a
+        }
+
+        function K(a) {
+          window.ping ? window.ping(a) : (new Image).src = a
+        }
+        (function () {
+          for (var a = (new Date).getTime() - window.start, b = J(a), c = 0, f = 0, h = 0, A = document
+              .getElementsByTagName("img"), n = "&imn=" + A.length + "&biw=" + window.innerWidth + "&bih=" +
+              window.innerHeight, L = function (g, p) {
+                g.onload = function () {
+                  f = (new Date).getTime() - window.start;
+                  p && ++t == h && (c = f, B());
+                  g.onload = null
+                }
+              }, B = function () {
+                n += "&ima=" + h;
+                b.aft = c;
+                K(I("aft", n, b))
+              }, t = 0, M = 0, d = void 0; d = A[M++];) {
+            var q = x(d),
+              r = 1 == q;
+            r && ++h;
+            var m = d.hasAttribute("data-ilite"),
+              u = d.hasAttribute("data-deferred") || m,
+              C = d.getAttribute("data-src") ||
+              d.getAttribute("data-lzysrc");
+            H.push([q, u, !u && C, google.ldi && d.id && google.ldi[d.id] || m && C]);
+            m = (q = d.complete && !u) && Number(d.getAttribute("data-iml")) || 0;
+            q && m ? (r && ++t, m && (d = m - window.start, r && (c = Math.max(c, d)), f = Math.max(f, d))) : L(d,
+              r)
+          }
+          c || (c = a);
+          f || (f = c);
+          t == h && B();
+          google.rglh && google.rglh();
+          window.addEventListener("load", function () {
+            window.setTimeout(function () {
+              b.ol = (new Date).getTime() - window.start;
+              b.iml = f;
+              var g = window.performance && window.performance.timing;
+              g && (b.rqst = g.responseEnd - g.requestStart, b.rspt =
+                g.responseEnd - g.responseStart);
+              for (var p = g = 0, D = 0, E = 0, F = 0, N = 0, k; k = H[N++];) {
+                var l = k[0],
+                  v = k[1],
+                  O = k[2];
+                k = k[3];
+                var P = 0 == l,
+                  w = l & 8,
+                  G = l & 4;
+                l = 1 == l || 2 == l || w && !G;
+                !l || w || v && !k || ++D;
+                v && (l && k && ++g, G && !k && ++p);
+                P || w ? O || ++F : v || ++E
+              }
+              n += "&ime=" + D + ("&imex=" + E + "&imeh=" + F) + ("&imea=" + g + "&imeb=" + p);
+              K(I("all", n, b))
+            }, 0)
+          }, !1)
+        })();
+      }).call(this);
+    })();
+
+  </script>
+  <script nonce="vVv1p5L1MD6T6SNnCiLrrQ==">
+    (function () {
+      var e = 'QFeWXo3POqSqrgSSpoe4CA';
+      (function () {
+        var a = e,
+          b = window.performance && window.performance.navigation;
+        b && 2 == b.type && window.ping("/gen_204?ct=backbutton&ei=" + a);
+      }).call(this);
+    })();
+    (function () {
+      var b = [function () {
+        google.tick && google.tick("load", "dcl")
+      }];
+      google.dclc = function (a) {
+        b.length ? b.push(a) : a()
+      };
+
+      function c() {
+        for (var a; a = b.shift();) a()
+      }
+      window.addEventListener ? (document.addEventListener("DOMContentLoaded", c, !1), window.addEventListener("load",
+        c, !1)) : window.attachEvent && window.attachEvent("onload", c);
+    }).call(this);
+    (function () {
+      (function () {
+        google.csct = {};
+        google.csct.ps = 'AOvVaw1HpysRgGra9X9zLvbiX7q4\x26ust\x3d1586997441002152';
+      })();
+    })();
+    (function () {
+      (function () {
+        google.csct.rd = true;
+      })();
+    })();
+    google.drty && google.drty();
+
+  </script>
+</body>
+
+</html>
